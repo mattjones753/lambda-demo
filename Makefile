@@ -11,8 +11,8 @@ clean:
 
 build: clean
 	mkdir -p bin
-	set -e && for pkg in $$(ls src/lambdas); do \
+	set -e && for pkg in $$(ls lambdas); do \
 		echo "\nbuilding: $$pkg\n"; \
-		GOOS=linux CGO_ENABLED=0 go build -o ./bin/$$pkg ./src/lambdas/$$pkg; \
+		GOOS=linux CGO_ENABLED=0 go build -o ./bin/$$pkg ./lambdas/$$pkg; \
         zip -qj ./bin/$$pkg.zip ./configs/rclone.conf ./bin/$$pkg; \
 	done
